@@ -1,10 +1,167 @@
 
+import csv
+import json
+import xml.etree.ElementTree as ET
+
+# Inheritance and polymorphism
+
+"""_summary
+    Inheritance and method overriding
+    polymorphism and method resolution order
+    Abstract classes and interfaces
+"""
+# Inheritance and method overriding
+"""_summary
+    --description
+    Inheritance and method overriding allows a class(child class)to inherit attributes and methods from another class(parent class)
+    Key concepts
+    Base class (parent class): Class whose properties are inherited by another class.
+    Derived class (child class): Class that inherits attributes and properties from another base class.
+
+"""
+# Example 1:Syntax create a class where a dod inherits from animal and overrides with the speak method
+
+
+# polymorphism
+# polymorphism allows objects of different classes to be treated as objects of a common super class.
+# Method resolution order (MRO) is order in which python looks for a method in a hierarchy classes.
+#  #Example 2:How polymorphism works in python
+
+
+class Animal:
+    """Animal"""
+
+    def speak(self):
+        return "Crock"
+
+
+class Dog(Animal):
+    def speak(self):
+        return "Barks"
+
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow"
+
+
+def make_animal_speak(animal):
+    print(animal.speak())
+
+
+make_animal_speak(Dog())
+make_animal_speak(Cat())
+
+
+# Exercise 1:Create a simple application to manage different types of vehicles , Implement
+# Derived class to demonstrate inheritance and polymorphism
+"""summary
+    Requirements
+    1 baseclass to vehicles
+    Attributes:make,model and year Methods:display_info()
+    2,Derived classes
+    car:inherit from vehicle
+    attributes: number_of_doors
+    overrides: display_info()
+    Motorcycle:inherits from vehicle
+    Attribute,type_of_bike(cruiser,sport,touring)
+    #Exercise 2:
+    create a function that accepts a list of vehicles and call their display_info()method to print details of each vehicle
+    
+"""
+
+
+class Vehicle:
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        print(f"Vehicle Info: {self.year} {self.make} {self.model}")
+
+
+class Car(Vehicle):
+
+    def __init__(self, make, model, year, number_of_doors):
+        super().__init__(make, model, year)
+        self.number_of_doors = number_of_doors
+
+    def display_info(self):
+        super().display_info()
+        print(f"Number of Doors: {self.number_of_doors}")
+
+
+class Motorcycle(Vehicle):
+
+    def __init__(self, make, model, year, type_of_bike):
+        super().__init__(make, model, year)
+        self.type_of_bike = type_of_bike
+
+    def display_info(self):
+        super().display_info()
+        print(f"Type of Bike: {self.type_of_bike}")
+
+# Exercise 2
+
+
+def display_vehicle_info(vehicles):
+    for vehicle in vehicles:
+        vehicle.display_info()
+        print()  # For better readability
+
+
+# Example usage:
+car = Car("Toyota", "Camry", 2020, 4)
+motorcycle = Motorcycle("Yamaha", "YZF-R3", 2021, "Sport")
+
+vehiclearr = [car, motorcycle]
+display_vehicle_info(vehiclearr)
+
+
+# Reading and writing files in python
+"""
+    summary
+    1. working with text files
+    handling CSV files
+    JSON and XML files processing
+    """
+# 1. working with text files ,open,read,write and close
+# note:python provides inbuilt functions to handle text files.
+# key concepts
+"""
+    summary
+    description
+    opening file:open() function (r,w,a,r+)
+    reading file: read() function
+    writing file:write() function
+    close file:close() function
+    """
+# example 3: write a file and read a file
+# writing to a text file
+with open('jeff.txt', 'w') as file:
+    file.write('iam jeff Geoff and i love python.\n')
+    file.write('i used python for automation')
+
+    # reading from a text file
+with open('jeff.txt', 'r') as file:
+    content = file.read()
+    print(content)
+
+    # handling CSV files
+    """
+    summary
+    CSV  (comma separated values)file widely for data exchange.
+    key concepts:
+    reading CSV file:using 'CSV.reader()'
+    writing CSV files:Using 'CSV.Writer'
+    DictReader and DictWriter: the class read and write CSV files as dictionaries
+    """
 # Exampkle 3: Write a file and read a file
 
 # Writing to a text file
 
-import xml.etree.ElementTree as ET
-import json
 with open('data.txt', 'w') as file:
     file.write('i am Jeff Goef and I use python python\n')
     file.write('This is our new text file\n')
@@ -27,7 +184,6 @@ DictReader and DictWriter: The class read and write CSV files as dictionaries
 
 # Example 4: Wrriting and Reading CSV files
 
-import csv
 
 # Writing to CSV files
 
