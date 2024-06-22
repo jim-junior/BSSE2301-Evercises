@@ -267,3 +267,31 @@ for child in elements[0]:
 
 
 # Exercise 3: Using Abstraction calculate the area and perimeter of a rectangle
+
+
+class Rectangle:
+
+    def __init__(self, length, width):
+        self.__length = length
+        self.__width = width
+
+    def area(self):
+        """
+        Calculates and returns the area of the rectangle.
+        """
+        return self.__length * self.__width
+
+    def perimeter(self):
+        """
+        Calculates and returns the perimeter of the rectangle.
+        """
+        return 2 * (self.__length + self.__width)
+
+
+rectangle = Rectangle(5, 3)
+
+area = rectangle.area()
+perimeter = rectangle.perimeter()
+
+print("Area of the rectangle:", area)
+print("Perimeter of the rectangle:", perimeter)
